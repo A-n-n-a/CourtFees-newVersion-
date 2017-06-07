@@ -8,20 +8,38 @@
 
 /* Begin PBXBuildFile section */
 		95BBBB7C1EE555B300100889 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BBBB7B1EE555B300100889 /* AppDelegate.swift */; };
-		95BBBB7E1EE555B300100889 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BBBB7D1EE555B300100889 /* ViewController.swift */; };
+		95BBBB7E1EE555B300100889 /* FirstTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BBBB7D1EE555B300100889 /* FirstTableViewController.swift */; };
 		95BBBB811EE555B300100889 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95BBBB7F1EE555B300100889 /* Main.storyboard */; };
 		95BBBB831EE555B300100889 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95BBBB821EE555B300100889 /* Assets.xcassets */; };
 		95BBBB861EE555B300100889 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95BBBB841EE555B300100889 /* LaunchScreen.storyboard */; };
+		95BBBB8E1EE5573E00100889 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BBBB8D1EE5573E00100889 /* Section.swift */; };
+		95BBBB901EE55AEA00100889 /* SecondTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BBBB8F1EE55AEA00100889 /* SecondTableViewController.swift */; };
+		95BBBB921EE55E7C00100889 /* SecondTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BBBB911EE55E7C00100889 /* SecondTable.swift */; };
+		95BBBB951EE5A9DE00100889 /* CalculationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BBBB941EE5A9DE00100889 /* CalculationViewController.swift */; };
+		95BBBB971EE5AB2100100889 /* CalculationDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BBBB961EE5AB2100100889 /* CalculationDetails.swift */; };
+		95BBBB9B1EE7463900100889 /* CellClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BBBB9A1EE7463900100889 /* CellClass.swift */; };
+		95BBBB9F1EE749A400100889 /* SecondTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BBBB9E1EE749A400100889 /* SecondTableViewCell.swift */; };
+		95BBBBA11EE74B3200100889 /* PaymentDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BBBBA01EE74B3200100889 /* PaymentDetailsViewController.swift */; };
+		95BBBBA31EE74B9700100889 /* Fees.json in Resources */ = {isa = PBXBuildFile; fileRef = 95BBBBA21EE74B9700100889 /* Fees.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		95BBBB781EE555B300100889 /* 1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95BBBB7B1EE555B300100889 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		95BBBB7D1EE555B300100889 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		95BBBB7D1EE555B300100889 /* FirstTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstTableViewController.swift; sourceTree = "<group>"; };
 		95BBBB801EE555B300100889 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		95BBBB821EE555B300100889 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		95BBBB851EE555B300100889 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		95BBBB871EE555B300100889 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		95BBBB8D1EE5573E00100889 /* Section.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
+		95BBBB8F1EE55AEA00100889 /* SecondTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SecondTableViewController.swift; path = ../SecondTableViewController.swift; sourceTree = "<group>"; };
+		95BBBB911EE55E7C00100889 /* SecondTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondTable.swift; sourceTree = "<group>"; };
+		95BBBB941EE5A9DE00100889 /* CalculationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculationViewController.swift; sourceTree = "<group>"; };
+		95BBBB961EE5AB2100100889 /* CalculationDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculationDetails.swift; sourceTree = "<group>"; };
+		95BBBB9A1EE7463900100889 /* CellClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CellClass.swift; path = ../CellClass.swift; sourceTree = "<group>"; };
+		95BBBB9E1EE749A400100889 /* SecondTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SecondTableViewCell.swift; path = ../SecondTableViewCell.swift; sourceTree = "<group>"; };
+		95BBBBA01EE74B3200100889 /* PaymentDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentDetailsViewController.swift; sourceTree = "<group>"; };
+		95BBBBA21EE74B9700100889 /* Fees.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Fees.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,13 +73,38 @@
 			isa = PBXGroup;
 			children = (
 				95BBBB7B1EE555B300100889 /* AppDelegate.swift */,
-				95BBBB7D1EE555B300100889 /* ViewController.swift */,
+				95BBBB931EE55EA300100889 /* Structs */,
+				95BBBB9D1EE7498900100889 /* Cells */,
+				95BBBB7D1EE555B300100889 /* FirstTableViewController.swift */,
+				95BBBB8F1EE55AEA00100889 /* SecondTableViewController.swift */,
+				95BBBB941EE5A9DE00100889 /* CalculationViewController.swift */,
+				95BBBBA01EE74B3200100889 /* PaymentDetailsViewController.swift */,
 				95BBBB7F1EE555B300100889 /* Main.storyboard */,
 				95BBBB821EE555B300100889 /* Assets.xcassets */,
+				95BBBBA21EE74B9700100889 /* Fees.json */,
 				95BBBB841EE555B300100889 /* LaunchScreen.storyboard */,
 				95BBBB871EE555B300100889 /* Info.plist */,
 			);
 			path = 1;
+			sourceTree = "<group>";
+		};
+		95BBBB931EE55EA300100889 /* Structs */ = {
+			isa = PBXGroup;
+			children = (
+				95BBBB8D1EE5573E00100889 /* Section.swift */,
+				95BBBB911EE55E7C00100889 /* SecondTable.swift */,
+				95BBBB961EE5AB2100100889 /* CalculationDetails.swift */,
+			);
+			name = Structs;
+			sourceTree = "<group>";
+		};
+		95BBBB9D1EE7498900100889 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				95BBBB9A1EE7463900100889 /* CellClass.swift */,
+				95BBBB9E1EE749A400100889 /* SecondTableViewCell.swift */,
+			);
+			name = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -124,6 +167,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95BBBBA31EE74B9700100889 /* Fees.json in Resources */,
 				95BBBB861EE555B300100889 /* LaunchScreen.storyboard in Resources */,
 				95BBBB831EE555B300100889 /* Assets.xcassets in Resources */,
 				95BBBB811EE555B300100889 /* Main.storyboard in Resources */,
@@ -137,7 +181,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				95BBBB7E1EE555B300100889 /* ViewController.swift in Sources */,
+				95BBBBA11EE74B3200100889 /* PaymentDetailsViewController.swift in Sources */,
+				95BBBB9B1EE7463900100889 /* CellClass.swift in Sources */,
+				95BBBB8E1EE5573E00100889 /* Section.swift in Sources */,
+				95BBBB901EE55AEA00100889 /* SecondTableViewController.swift in Sources */,
+				95BBBB921EE55E7C00100889 /* SecondTable.swift in Sources */,
+				95BBBB971EE5AB2100100889 /* CalculationDetails.swift in Sources */,
+				95BBBB9F1EE749A400100889 /* SecondTableViewCell.swift in Sources */,
+				95BBBB7E1EE555B300100889 /* FirstTableViewController.swift in Sources */,
+				95BBBB951EE5A9DE00100889 /* CalculationViewController.swift in Sources */,
 				95BBBB7C1EE555B300100889 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
