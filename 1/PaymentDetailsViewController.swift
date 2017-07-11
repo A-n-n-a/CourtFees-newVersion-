@@ -108,6 +108,7 @@ class PaymentDetailsViewController: UIViewController, UITextFieldDelegate {
             guard let array = json as? [Any] else {
              return
             }
+           // print("ARRAY\n\(array)")
             for court in array {
                 guard let courtDict = court as? [String:Any] else { return}
                 guard (courtDict["crt_name"] as? String) != nil else {print("Not a String"); return}
@@ -141,7 +142,7 @@ class PaymentDetailsViewController: UIViewController, UITextFieldDelegate {
             
                 
             }
-            print(structArray.count)
+            print("COUNT: \(structArray.count)")
             
             /*for i in structArray {
                 let x = i.name as? String, y = String(i.bank)
