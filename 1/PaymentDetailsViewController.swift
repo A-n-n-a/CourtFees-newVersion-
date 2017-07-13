@@ -14,6 +14,7 @@ class PaymentDetailsViewController: UIViewController, UITextFieldDelegate, UITab
     @IBOutlet weak var output: UILabel!
     @IBOutlet weak var dropDown: UITableView!
 
+    @IBOutlet weak var dropDownHeight: NSLayoutConstraint!
     
     struct Rekvizit {
         var name: Any
@@ -68,7 +69,11 @@ class PaymentDetailsViewController: UIViewController, UITextFieldDelegate, UITab
         
         dropDown.isHidden = true
         dropDown.rowHeight = 20
-        dropDown.tableFooterView = UIView()
+        //dropDownHeight.constant = dropDown.contentSize.height
+//        var frame = dropDown.frame
+//        frame.size.height = dropDown.contentSize.height
+//        dropDown.frame = frame
+        //dropDown.tableFooterView = UIView()
         
         
         //Declaration
@@ -268,7 +273,7 @@ class PaymentDetailsViewController: UIViewController, UITextFieldDelegate, UITab
     }
     
     @IBAction func ifTextHasChanged(_ sender: Any) {
-        if (text.text?.characters.count)! > 3 {
+        if (text.text?.characters.count)! >= 3 {
             dropDown.isHidden = false
             for i in structArray {
                 let name = i.name as! String
@@ -280,6 +285,7 @@ class PaymentDetailsViewController: UIViewController, UITextFieldDelegate, UITab
                     print(dropDownArray)
                 }
             }
+            dropDownHeight.constant = dropDown.contentSize.height
             
         }
     }
@@ -317,6 +323,12 @@ class PaymentDetailsViewController: UIViewController, UITextFieldDelegate, UITab
         cell.textLabel?.font = UIFont.systemFont(ofSize: 13.0)
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        text.text = tableView.cellForRow(at: indexPath)?.textLabel?.text
+        dropDown.isHidden = true
+        performAction()
     }
         
 

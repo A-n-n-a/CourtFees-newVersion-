@@ -343,7 +343,7 @@
                                 <rect key="frame" x="20" y="162" width="290" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="0.46949914383561642" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="Y4q-2u-OVK"/>
+                                    <constraint firstAttribute="height" constant="50" id="ogK-eM-Rmy"/>
                                 </constraints>
                                 <color key="sectionIndexBackgroundColor" white="1" alpha="0.4100759845890411" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -354,6 +354,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="290" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="1" alpha="0.47490368150684931" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                 </prototypes>
                                 <userDefinedRuntimeAttributes>
@@ -394,6 +395,7 @@
                     </view>
                     <connections>
                         <outlet property="dropDown" destination="teO-O5-sTV" id="8H4-2T-hfP"/>
+                        <outlet property="dropDownHeight" destination="ogK-eM-Rmy" id="bg0-Ee-N2u"/>
                         <outlet property="output" destination="lXj-cG-pC1" id="yi5-dN-Ng3"/>
                         <outlet property="text" destination="uNW-lw-SfX" id="zel-gg-p9h"/>
                     </connections>
