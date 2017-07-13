@@ -275,6 +275,7 @@ class PaymentDetailsViewController: UIViewController, UITextFieldDelegate, UITab
     @IBAction func ifTextHasChanged(_ sender: Any) {
         if (text.text?.characters.count)! >= 3 {
             dropDown.isHidden = false
+            dropDownArray = []
             for i in structArray {
                 let name = i.name as! String
                 let lowName = name.lowercased()
@@ -287,6 +288,13 @@ class PaymentDetailsViewController: UIViewController, UITextFieldDelegate, UITab
             }
             dropDownHeight.constant = dropDown.contentSize.height
             
+//            if text.text == "" {
+//                dropDownArray = []
+//                dropDown.isHidden = true
+//            }
+        } else {
+            dropDownArray = []
+            dropDown.isHidden = true
         }
     }
     
