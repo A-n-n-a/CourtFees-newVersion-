@@ -333,12 +333,6 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TJy-eu-ENg">
-                                <rect key="frame" x="16" y="0.0" width="45" height="30"/>
-                                <state key="normal" title="Назад">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="teO-O5-sTV">
                                 <rect key="frame" x="20" y="162" width="290" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="0.46949914383561642" colorSpace="calibratedWhite"/>
@@ -378,9 +372,7 @@
                             <constraint firstItem="kKF-vo-Sq0" firstAttribute="top" secondItem="zw5-em-vdm" secondAttribute="bottom" id="606-Xt-gvt"/>
                             <constraint firstItem="teO-O5-sTV" firstAttribute="trailing" secondItem="uNW-lw-SfX" secondAttribute="trailing" id="JwU-NO-zgZ"/>
                             <constraint firstItem="teO-O5-sTV" firstAttribute="top" secondItem="uNW-lw-SfX" secondAttribute="bottom" constant="1" id="Nb9-5l-zca"/>
-                            <constraint firstItem="TJy-eu-ENg" firstAttribute="top" secondItem="LhH-fl-Hci" secondAttribute="topMargin" id="TF5-Zq-Wmj"/>
                             <constraint firstItem="zw5-em-vdm" firstAttribute="top" secondItem="LhH-fl-Hci" secondAttribute="top" id="Y8b-9Z-uX1"/>
-                            <constraint firstItem="TJy-eu-ENg" firstAttribute="leading" secondItem="LhH-fl-Hci" secondAttribute="leadingMargin" id="dwC-b2-Oql"/>
                             <constraint firstItem="WMa-7Q-DBu" firstAttribute="leading" secondItem="LhH-fl-Hci" secondAttribute="leadingMargin" constant="10" id="epY-A1-eA8"/>
                             <constraint firstAttribute="trailing" secondItem="zw5-em-vdm" secondAttribute="trailing" id="f3W-IZ-F3T"/>
                             <constraint firstItem="teO-O5-sTV" firstAttribute="leading" secondItem="uNW-lw-SfX" secondAttribute="leading" id="ffS-Lk-6rf"/>

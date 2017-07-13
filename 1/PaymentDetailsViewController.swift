@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class PaymentDetailsViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource {
     
@@ -37,6 +38,8 @@ class PaymentDetailsViewController: UIViewController, UITextFieldDelegate, UITab
             self.symbol = symbol
         }
     }
+    
+    var ref: DatabaseReference? = Database.database().reference()
 
     var structArray = [Rekvizit]()
     var someStruct = Rekvizit(name: "", payee: "", zkpo: "", bank: "", mfo: "", account: "", code: "", symbol: "")
@@ -54,7 +57,7 @@ class PaymentDetailsViewController: UIViewController, UITextFieldDelegate, UITab
     
     var dropDownArray = [String]()
     
-    let districts = ["Автономна Республіка Крим", "Вінницька область", "Волинська область", "Дніпропетровська область", "Донецька область", "Житомирська область", "Закарпатська область", "Запорізька область", "Івано-Франківська область", "місто Київ", "Київська область", "Кіровоградська область", "Луганська область", "Львівська область", "Миколаївська область", "Одеська область", "Полтавська область", "Рівненська область", "Сумська область", "Тернопільська область", "Харківська область", "Херсонська область", "Хмельницька область", "Черкаська область", "Чернігівська область", "Черновицька область", "місто Севастополь"]
+    //let districts = ["Автономна Республіка Крим", "Вінницька область", "Волинська область", "Дніпропетровська область", "Донецька область", "Житомирська область", "Закарпатська область", "Запорізька область", "Івано-Франківська область", "місто Київ", "Київська область", "Кіровоградська область", "Луганська область", "Львівська область", "Миколаївська область", "Одеська область", "Полтавська область", "Рівненська область", "Сумська область", "Тернопільська область", "Харківська область", "Херсонська область", "Хмельницька область", "Черкаська область", "Чернігівська область", "Черновицька область", "місто Севастополь"]
     
     //key board will dissmiss while touching screeng anywhere
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -69,6 +72,9 @@ class PaymentDetailsViewController: UIViewController, UITextFieldDelegate, UITab
         
         dropDown.isHidden = true
         dropDown.rowHeight = 20
+        
+        //self.navigationController?.navigationItem.title = "Назад"
+        self.navigationController!.navigationBar.topItem!.title = "Назад"
         //dropDownHeight.constant = dropDown.contentSize.height
 //        var frame = dropDown.frame
 //        frame.size.height = dropDown.contentSize.height
@@ -107,8 +113,37 @@ class PaymentDetailsViewController: UIViewController, UITextFieldDelegate, UITab
         var chernigiv = [String]()
         var chernivtsi = [String]()
         */
-        
-        
+        var index = 0
+        for i in 0..<718 {
+            self.ref?.child(String(index)
+                ).observe(.value, with: { (snapshot) in
+                
+                if let value = snapshot.value as? [String : AnyObject] {
+                    
+                    self.namesArray.append(value["crt_name"] as! String)
+                    self.payeeArray.append(value["tax_payee"] as! String)
+                    self.zkpoArray.append(value["tax_zkpo"] as! String)
+                    self.bankArray.append(value["tax_bank"] as! String)
+                    self.mfoArray.append(value["tax_mfo"] as! String)
+                    self.accountArray.append(value["tax_account"] as! String)
+                    self.codeArray.append(value["tax_code"] as! String)
+                    self.symbolArray.append(value["tax_symbol"] as! String)
+                    
+                    self.someStruct.name = self.namesArray[index]
+                    self.someStruct.payee = self.payeeArray[index]
+                    self.someStruct.zkpo = self.zkpoArray[index]
+                    self.someStruct.bank = self.bankArray[index]
+                    self.someStruct.mfo = self.mfoArray[index]
+                    self.someStruct.account = self.accountArray[index]
+                    self.someStruct.code = self.codeArray[index]
+                    self.someStruct.symbol = self.symbolArray[index]
+                    index += 1
+                    self.structArray.append(self.someStruct)
+                }
+                
+            })
+
+        }
         
         //JSON
         guard let path = Bundle.main.path(forResource: "Fees", ofType: "json") else {
@@ -288,34 +323,12 @@ class PaymentDetailsViewController: UIViewController, UITextFieldDelegate, UITab
             }
             dropDownHeight.constant = dropDown.contentSize.height
             
-//            if text.text == "" {
-//                dropDownArray = []
-//                dropDown.isHidden = true
-//            }
         } else {
             dropDownArray = []
             dropDown.isHidden = true
         }
     }
     
-//    func textFieldDidBeginEditing(_ textField: UITextField) {
-//        
-//        
-//        if (text.text?.characters.count)! > 0 {
-//            dropDown.isHidden = false
-//            for i in structArray {
-//                let name = i.name as! String
-//                let lowName = name.lowercased()
-//                let input = text.text?.lowercased()
-//                if input?.lowercased() == lowName || (lowName.range(of: input!) != nil) {
-//                    dropDownArray.append(name)
-//                    self.dropDown.reloadData()
-//                    print(dropDownArray)
-//                }
-//            }
-//
-//        }
-//    }
     
     // MARK: DROPDOWN MENU
     
