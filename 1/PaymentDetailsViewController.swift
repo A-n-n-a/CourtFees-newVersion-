@@ -8,10 +8,11 @@
 
 import UIKit
 
-class PaymentDetailsViewController: UIViewController, UITextFieldDelegate {
+class PaymentDetailsViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var text: UITextField!
     @IBOutlet weak var output: UILabel!
+    @IBOutlet weak var dropDown: UITableView!
 
     
     struct Rekvizit {
@@ -41,6 +42,17 @@ class PaymentDetailsViewController: UIViewController, UITextFieldDelegate {
     var index = 0
     var tempstring = ""
     
+    var namesArray = [String]()
+    var payeeArray = [String]()
+    var zkpoArray = [String]()
+    var bankArray = [String]()
+    var mfoArray = [String]()
+    var accountArray = [String]()
+    var codeArray = [String]()
+    var symbolArray = [String]()
+    
+    var dropDownArray = [String]()
+    
     let districts = ["Автономна Республіка Крим", "Вінницька область", "Волинська область", "Дніпропетровська область", "Донецька область", "Житомирська область", "Закарпатська область", "Запорізька область", "Івано-Франківська область", "місто Київ", "Київська область", "Кіровоградська область", "Луганська область", "Львівська область", "Миколаївська область", "Одеська область", "Полтавська область", "Рівненська область", "Сумська область", "Тернопільська область", "Харківська область", "Херсонська область", "Хмельницька область", "Черкаська область", "Чернігівська область", "Черновицька область", "місто Севастополь"]
     
     //key board will dissmiss while touching screeng anywhere
@@ -51,18 +63,17 @@ class PaymentDetailsViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         text.delegate = self
+        
+        dropDown.isHidden = true
+        dropDown.rowHeight = 20
+        dropDown.tableFooterView = UIView()
+        
         
         //Declaration
         
-        var namesArray = [String]()
-        var payeeArray = [String]()
-        var zkpoArray = [String]()
-        var bankArray = [String]()
-        var mfoArray = [String]()
-        var accountArray = [String]()
-        var codeArray = [String]()
-        var symbolArray = [String]()
+        
         
         /*var courtSum = 0
         var vinnitsa = [String]()
@@ -242,11 +253,12 @@ class PaymentDetailsViewController: UIViewController, UITextFieldDelegate {
             let name = i.name as! String
             let lowName = name.lowercased()
             let input = text.text?.lowercased()
-            if input?.lowercased() == name.lowercased() || (lowName.range(of: input!) != nil) {
-                text.placeholder = name
+            if input?.lowercased() == lowName || (lowName.range(of: input!) != nil) {
+                //text.placeholder = name
                 output.text = "Платiжнi реквiзити для перерахування судового збору в гривнях\n\n\(i.name)\n\nОтримувач коштів:  \(i.payee) \nКод отримувача (код за ЄДРПОУ):  \(i.zkpo)\nБанк отримувача:  \(i.bank)\nКод банку отримувача (МФО):  \(i.mfo)\nРахунок отримувача:  \(i.account)\nКод класифікації доходів бюджету:  \(i.code)\nПризначення платежу: *;101;__________(ІПН/ЄДРПОУ платника);Судовий збір, за позовом ___________ (ПІБ/назва), \(i.name)"
             //} else {
                // output.text = "Не знайдено"
+              dropDownArray.append(name)
             }
         }
     }
@@ -254,9 +266,59 @@ class PaymentDetailsViewController: UIViewController, UITextFieldDelegate {
     @IBAction func searchButton(_ sender: UIButton) {
         performAction()
     }
-
-        
     
+    @IBAction func ifTextHasChanged(_ sender: Any) {
+        if (text.text?.characters.count)! > 3 {
+            dropDown.isHidden = false
+            for i in structArray {
+                let name = i.name as! String
+                let lowName = name.lowercased()
+                let input = text.text?.lowercased()
+                if input?.lowercased() == lowName || (lowName.range(of: input!) != nil) {
+                    dropDownArray.append(name)
+                    self.dropDown.reloadData()
+                    print(dropDownArray)
+                }
+            }
+            
+        }
+    }
+    
+//    func textFieldDidBeginEditing(_ textField: UITextField) {
+//        
+//        
+//        if (text.text?.characters.count)! > 0 {
+//            dropDown.isHidden = false
+//            for i in structArray {
+//                let name = i.name as! String
+//                let lowName = name.lowercased()
+//                let input = text.text?.lowercased()
+//                if input?.lowercased() == lowName || (lowName.range(of: input!) != nil) {
+//                    dropDownArray.append(name)
+//                    self.dropDown.reloadData()
+//                    print(dropDownArray)
+//                }
+//            }
+//
+//        }
+//    }
+    
+    // MARK: DROPDOWN MENU
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return dropDownArray.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "DropDownCell", for: indexPath)
+        cell.textLabel?.text = dropDownArray[indexPath.row]
+        
+        cell.textLabel?.font = UIFont.systemFont(ofSize: 13.0)
+        
+        return cell
+    }
+        
 
     
 }
