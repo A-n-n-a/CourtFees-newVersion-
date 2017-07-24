@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		953BCCE71F1E101200377512 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953BCCE61F1E101200377512 /* InitialViewController.swift */; };
 		95BBBB7C1EE555B300100889 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BBBB7B1EE555B300100889 /* AppDelegate.swift */; };
 		95BBBB7E1EE555B300100889 /* FirstTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BBBB7D1EE555B300100889 /* FirstTableViewController.swift */; };
 		95BBBB811EE555B300100889 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95BBBB7F1EE555B300100889 /* Main.storyboard */; };
@@ -28,6 +29,7 @@
 /* Begin PBXFileReference section */
 		173F21ADEC5677508E731EF9 /* Pods-Court Fee.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Court Fee.release.xcconfig"; path = "Pods/Target Support Files/Pods-Court Fee/Pods-Court Fee.release.xcconfig"; sourceTree = "<group>"; };
 		29581F165C23D9E3EA96DC17 /* Pods_Court_Fee.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Court_Fee.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		953BCCE61F1E101200377512 /* InitialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		95BBBB781EE555B300100889 /* Court Fee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Court Fee.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		95BBBB7B1EE555B300100889 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		95BBBB7D1EE555B300100889 /* FirstTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstTableViewController.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 				95BBBB7B1EE555B300100889 /* AppDelegate.swift */,
 				95BBBB931EE55EA300100889 /* Models */,
 				95BBBB9D1EE7498900100889 /* UI */,
+				953BCCE61F1E101200377512 /* InitialViewController.swift */,
 				95BBBB7D1EE555B300100889 /* FirstTableViewController.swift */,
 				95BBBB8F1EE55AEA00100889 /* SecondTableViewController.swift */,
 				95BBBB941EE5A9DE00100889 /* CalculationViewController.swift */,
@@ -271,6 +274,7 @@
 			files = (
 				95BBBBA11EE74B3200100889 /* PaymentDetailsViewController.swift in Sources */,
 				95BBBB9B1EE7463900100889 /* CellClass.swift in Sources */,
+				953BCCE71F1E101200377512 /* InitialViewController.swift in Sources */,
 				95BBBB8E1EE5573E00100889 /* Section.swift in Sources */,
 				95BBBB901EE55AEA00100889 /* SecondTableViewController.swift in Sources */,
 				95BBBB921EE55E7C00100889 /* SecondTable.swift in Sources */,
@@ -406,6 +410,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = X8E2R8HQQL;
 				INFOPLIST_FILE = 1/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "A-Lime-Studio.-CourtFee";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -420,6 +425,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = X8E2R8HQQL;
 				INFOPLIST_FILE = 1/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "A-Lime-Studio.-CourtFee";
 				PRODUCT_NAME = "$(TARGET_NAME)";

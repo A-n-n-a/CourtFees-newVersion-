@@ -8,14 +8,16 @@
 
 import UIKit
 import FirebaseDatabase
+import GoogleMobileAds
 
-class PaymentDetailsViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource {
+class PaymentDetailsViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, GADBannerViewDelegate {
     
     @IBOutlet weak var text: UITextField!
     @IBOutlet weak var output: UILabel!
     @IBOutlet weak var dropDown: UITableView!
 
     @IBOutlet weak var dropDownHeight: NSLayoutConstraint!
+    @IBOutlet weak var myBanner: GADBannerView!
     
     struct Rekvizit {
         var name: Any
@@ -57,13 +59,13 @@ class PaymentDetailsViewController: UIViewController, UITextFieldDelegate, UITab
     
     var dropDownArray = [String]()
     
+    var exeptionArray = [String]()
+    var exeptionArrayCount = Int()
+    var courtsCount = Int()
+    
     //let districts = ["Автономна Республіка Крим", "Вінницька область", "Волинська область", "Дніпропетровська область", "Донецька область", "Житомирська область", "Закарпатська область", "Запорізька область", "Івано-Франківська область", "місто Київ", "Київська область", "Кіровоградська область", "Луганська область", "Львівська область", "Миколаївська область", "Одеська область", "Полтавська область", "Рівненська область", "Сумська область", "Тернопільська область", "Харківська область", "Херсонська область", "Хмельницька область", "Черкаська область", "Чернігівська область", "Черновицька область", "місто Севастополь"]
     
-    //key board will dissmiss while touching screeng anywhere
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-        
-    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,9 +84,31 @@ class PaymentDetailsViewController: UIViewController, UITextFieldDelegate, UITab
         //dropDown.tableFooterView = UIView()
         
         
+
+        
+        
         //Declaration
+        let viewHeight = self.view.frame.size.height
+        let viewWidth = self.view.frame.size.width
+        
+//        print("HEIGHT: \(viewHeight)")
+//        print("WIDTH: \(viewWidth)")
         
         
+        
+        let device = UIDevice.current
+        
+        if device.orientation.isLandscape {
+            let widthConstraint = NSLayoutConstraint(item: text, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: (viewWidth - 80))
+            view.addConstraints([widthConstraint])
+            //print("LANDSCAPE")
+            //print(widthConstraint)
+        } else {
+            let widthConstraint = NSLayoutConstraint(item: text, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: (viewWidth - 80))
+            view.addConstraints([widthConstraint])
+
+        }
+    
         
         /*var courtSum = 0
         var vinnitsa = [String]()
@@ -113,8 +137,29 @@ class PaymentDetailsViewController: UIViewController, UITextFieldDelegate, UITab
         var chernigiv = [String]()
         var chernivtsi = [String]()
         */
+        //print("EXEPTIONS COUNT: \(exeptionArrayCount)")
+//        self.ref?.child("exeptionArray").observe(.value, with: { (snapshot) in
+//            if let value = snapshot.value as? [String : AnyObject] {
+//                for i in 0..<self.exeptionArrayCount {
+//                    let string = String(i)
+//                    self.exeptionArray.append(value[string] as! String)
+//                }
+//            }
+//        })
+//        self.ref?.child("exeptionArray").observe(.value, with: { (snapshot) in
+//            print("SNAPSHOT: \(snapshot.value)")
+//            if let value = snapshot.value as? [String] {
+//                self.exeptionArray = value
+//                //                for i in 0..<self.exeptionArrayCount {
+//                //                    let string = String(i)
+//                //                    self.exeptionArray.append(value[string] as! String)
+//                //                }
+//            }
+//        })
+        
         var index = 0
-        for i in 0..<718 {
+       // print("CORTS COUNT: \(courtsCount)")
+        for _ in 0..<courtsCount {
             self.ref?.child(String(index)
                 ).observe(.value, with: { (snapshot) in
                 
@@ -280,8 +325,23 @@ class PaymentDetailsViewController: UIViewController, UITextFieldDelegate, UITab
         catch {
             print(error)
         }
+        
+        let request = GADRequest()
+        request.testDevices = [kGADSimulatorID]
+        
+        myBanner.adUnitID = "ca-app-pub-4375494746414239/6254715307"
+        myBanner.rootViewController = self
+        myBanner.delegate = self
+        myBanner.load(request)
 
    }
+    
+    //key board will dissmiss while touching screeng anywhere
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+        
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         performAction()
@@ -289,16 +349,33 @@ class PaymentDetailsViewController: UIViewController, UITextFieldDelegate, UITab
     }
     
     func performAction () -> () {
+
         for i in structArray {
             let name = i.name as! String
             let lowName = name.lowercased()
             let input = text.text?.lowercased()
-            if input?.lowercased() == lowName || (lowName.range(of: input!) != nil) {
-                //text.placeholder = name
-                output.text = "Платiжнi реквiзити для перерахування судового збору в гривнях\n\n\(i.name)\n\nОтримувач коштів:  \(i.payee) \nКод отримувача (код за ЄДРПОУ):  \(i.zkpo)\nБанк отримувача:  \(i.bank)\nКод банку отримувача (МФО):  \(i.mfo)\nРахунок отримувача:  \(i.account)\nКод класифікації доходів бюджету:  \(i.code)\nПризначення платежу: *;101;__________(ІПН/ЄДРПОУ платника);Судовий збір, за позовом ___________ (ПІБ/назва), \(i.name)"
-            //} else {
-               // output.text = "Не знайдено"
-              dropDownArray.append(name)
+//            if input?.lowercased() == lowName || (lowName.range(of: input!) != nil) {
+//                //text.placeholder = name
+//                output.text = "Платiжнi реквiзити для перерахування судового збору в гривнях\n\n\(i.name)\n\nОтримувач коштів:  \(i.payee) \nКод отримувача (код за ЄДРПОУ):  \(i.zkpo)\nБанк отримувача:  \(i.bank)\nКод банку отримувача (МФО):  \(i.mfo)\nРахунок отримувача:  \(i.account)\nКод класифікації доходів бюджету:  \(i.code)\nПризначення платежу: *;101;__________(ІПН/ЄДРПОУ платника);Судовий збір, за позовом ___________ (ПІБ/назва), \(i.name)"
+//            //} else {
+//               // output.text = "Не знайдено"
+//              dropDownArray.append(name)
+//            }
+            for x in exeptionArray {
+                //print(x)
+                if x.lowercased() == input?.lowercased() {
+                    output.text = "Даний суд знаходиться в районі проведення антитерористичної операції і не може здійснювати правосуддя. Згідно Закону України 'Про здійснення правосуддя та кримінального провадження у зв’язку з проведенням антитерористичної операції' справи, підсудні даному суду, розглядаються судами, що визначаються головою Вищого спеціалізованого суду України з розгляду цивільних і кримінальних справ"
+                    break
+                } else {
+                    if input?.lowercased() == lowName || (lowName.range(of: input!) != nil) {
+                        //text.placeholder = name
+                        output.text = "Платiжнi реквiзити для перерахування судового збору в гривнях\n\n\(i.name)\n\nОтримувач коштів:  \(i.payee) \nКод отримувача (код за ЄДРПОУ):  \(i.zkpo)\nБанк отримувача:  \(i.bank)\nКод банку отримувача (МФО):  \(i.mfo)\nРахунок отримувача:  \(i.account)\nКод класифікації доходів бюджету:  \(i.code)\nПризначення платежу: *;101;__________(ІПН/ЄДРПОУ платника);Судовий збір, за позовом ___________ (ПІБ/назва), \(i.name)"
+                        //} else {
+                        // output.text = "Не знайдено"
+                        dropDownArray.append(name)
+                    }
+
+                }
             }
         }
     }
@@ -318,7 +395,7 @@ class PaymentDetailsViewController: UIViewController, UITextFieldDelegate, UITab
                 if input?.lowercased() == lowName || (lowName.range(of: input!) != nil) {
                     dropDownArray.append(name)
                     self.dropDown.reloadData()
-                    print(dropDownArray)
+                    //print(dropDownArray)
                 }
             }
             dropDownHeight.constant = dropDown.contentSize.height
