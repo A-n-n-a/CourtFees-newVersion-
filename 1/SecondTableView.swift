@@ -1,19 +1,21 @@
 //
-//  SecondTableViewController.swift
-//  1
+//  SecondTableView.swift
+//  Court Fee
 //
-//  Created by Anna on 05.06.17.
+//  Created by Anna on 8/6/17.
 //  Copyright © 2017 Anna. All rights reserved.
 //
 
 import UIKit
-import Firebase
 import FirebaseDatabase
+import GoogleMobileAds
 
-class SecondTableViewController: UITableViewController {
+class SecondTableView: UIViewController, UITableViewDelegate, UITableViewDataSource, GADBannerViewDelegate {
     
-    var ref: DatabaseReference? = Database.database().reference()
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var myBanner: GADBannerView!
     
+    var ref: DatabaseReference?
     var sections = [String]()
     var objects = [[String]]()
     
@@ -65,22 +67,46 @@ class SecondTableViewController: UITableViewController {
                             CalculationDetails(condition: "6) за виготовлення копій документів, долучених до справи", percent: nil, min: 0.003, max: nil, percentOfFirstInstanceFee: nil, sheetsNeeded: true),
                             CalculationDetails(condition: "У разі ухвалення судом постанови про накладення адміністративного стягнення", percent: nil, min: 0.2, max: nil, percentOfFirstInstanceFee: nil, sheetsNeeded: false)]
     
-    
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationController?.navigationBar.topItem!.title = "Назад"
+        self.navigationController?.navigationBar.tintColor = UIColor.white
+
+        
+        ref = Database.database().reference()
+
+
         //self-resizing cell
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 200
         
         //set the background
-        if let tableView = self.view as? UITableView {
-            let image = UIImage(named: "structure-2163469_960_720")
-            let imageView = UIImageView(image: image)
-            tableView.backgroundView = imageView
-        }
         
+        let image = UIImage(named: "bg")
+        let imageView = UIImageView(image: image)
+        tableView.backgroundView = imageView
+        
+//        let image = UIImage(named: "vintage-wood-background-28869861")
+//        let imageView = UIImageView(image: image)
+//        tableView.backgroundView = imageView
+//        if #available(iOS 10.0, *) {
+//            tableView.backgroundColor = UIColor(displayP3Red: 14/255.0, green: 33/255.0, blue: 52/255.0, alpha: 1)
+//        } else {
+//            // Fallback on earlier versions
+//        }
+        
+        self.tableView.register(UINib(nibName: "HeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: "HeaderView")
+        
+        // ad banner
+        let request = GADRequest()
+        request.testDevices = [kGADSimulatorID]
+        myBanner.adUnitID = "ca-app-pub-4375494746414239/6254715307"
+        myBanner.rootViewController = self
+        myBanner.delegate = self
+        myBanner.load(request)
         
         //retrieve data from Firebase
         self.ref?.child("socialMinimum").observe(.value, with: { (snapshot) in
@@ -98,31 +124,27 @@ class SecondTableViewController: UITableViewController {
             
         })
 
-
     }
 
-
-
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
+     func numberOfSections(in tableView: UITableView) -> Int {
         return sections.count
     }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
+     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.objects[section].count
     }
     
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return self.sections[section]
     }
-
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    
+     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SecondCell", for: indexPath) as! SecondTableViewCell
-
+        
         cell.labelCell?.text = self.objects[indexPath.section][indexPath.row]
-        cell.labelCell?.textColor = UIColor(white: 1.0, alpha: 1.0)
-
+        //cell.labelCell?.textColor = UIColor(white: 1.0, alpha: 1.0)
+        
         return cell
     }
     
@@ -135,16 +157,16 @@ class SecondTableViewController: UITableViewController {
         selectedRow = self.tableView.cellForRow(at: selectedRowIndex!)! as! SecondTableViewCell
         
         /*if  selectedRow.textLabel?.text == "1) за повторну видачу копії судового рішення" ||
-            selectedRow.textLabel?.text == "3) за роздрукування технічного запису судового засідання" ||
-            selectedRow.textLabel?.text == "5) за виготовлення копії судового рішення у разі, якщо особа, яка не бере (не брала) участі у справі, якщо судове рішення безпосередньо стосується її прав, свобод, інтересів чи обов’язків, звертається до апарату відповідного суду з письмовою заявою про виготовлення такої копії згідно із Законом України 'Про доступ до судових рішень'" ||
-            selectedRow.textLabel?.text == "6) за виготовлення копій документів, долучених до справи" {
-            if destViewController.sheetsLabel != nil {
-                destViewController.sheetsLabel.isHidden = false
-            }
-            //if destViewController.sheetsTextField != nil {
-            destViewController.sheetsTextField.isHidden = false
-            
-        }*/
+         selectedRow.textLabel?.text == "3) за роздрукування технічного запису судового засідання" ||
+         selectedRow.textLabel?.text == "5) за виготовлення копії судового рішення у разі, якщо особа, яка не бере (не брала) участі у справі, якщо судове рішення безпосередньо стосується її прав, свобод, інтересів чи обов’язків, звертається до апарату відповідного суду з письмовою заявою про виготовлення такої копії згідно із Законом України 'Про доступ до судових рішень'" ||
+         selectedRow.textLabel?.text == "6) за виготовлення копій документів, долучених до справи" {
+         if destViewController.sheetsLabel != nil {
+         destViewController.sheetsLabel.isHidden = false
+         }
+         //if destViewController.sheetsTextField != nil {
+         destViewController.sheetsTextField.isHidden = false
+         
+         }*/
         //print(selectedRow.labelCell?.text ?? "DEFAULT")
         for i in calculationArray {
             
@@ -188,11 +210,7 @@ class SecondTableViewController: UITableViewController {
         
         //print("Condition: \(i.condition)")
         //print("Selected row: \(selectedRow.textLabel!.text!)")
-       
+        
     }
-    
 
-
-
-    
 }

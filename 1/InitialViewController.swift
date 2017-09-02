@@ -19,19 +19,20 @@ class InitialViewController: UIViewController, GADBannerViewDelegate {
     var exeptionArrayCount = Int()
     var courtsCount = Int()
     
-
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationController?.navigationBar.topItem!.title = "Назад"
+        self.navigationController?.navigationBar.tintColor = UIColor.white
+        
+        // ad banner
         let request = GADRequest()
         request.testDevices = [kGADSimulatorID]
-        
         myBanner.adUnitID = "ca-app-pub-4375494746414239/6254715307"
         myBanner.rootViewController = self
         myBanner.delegate = self
         myBanner.load(request)
+        
         ref = Database.database().reference()
 
         
@@ -47,32 +48,26 @@ class InitialViewController: UIViewController, GADBannerViewDelegate {
         })
         
         self.ref?.child("exeptionArray").observe(.value, with: { (snapshot) in
-            print("SNAPSHOT: \(snapshot.value)")
             if let value = snapshot.value as? NSArray {
-                
-                self.exeptionArray = value as! [String] 
-//                for i in 0..<self.exeptionArrayCount {
-//                    let string = String(i)
-//                    self.exeptionArray.append(value[string] as! String)
-//                }
-                
+                self.exeptionArray = value as! [String]
             }
         })
-
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
+        if segue.identifier == "ToPaymentDetails" {
         
-        let destViewController = segue.destination as! PaymentDetailsViewController
-
-        destViewController.exeptionArrayCount = self.exeptionArrayCount
-        destViewController.courtsCount = self.courtsCount
-        destViewController.exeptionArray = self.exeptionArray
-        print("EXEPTIONCOUNT: \(exeptionArrayCount)")
-        print("COURTSCOUNT: \(courtsCount)")
-        print("EXEPTION: \(exeptionArray.count)")
+            let destViewController = segue.destination as! PaymentDetailsViewController
+            destViewController.exeptionArrayCount = self.exeptionArrayCount
+            destViewController.courtsCount = self.courtsCount
+            destViewController.exeptionArray = self.exeptionArray
+            print("EXEPTIONCOUNT: \(exeptionArrayCount)")
+        }
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = true
+    }
     
 }

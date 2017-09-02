@@ -3,10 +3,11 @@
 import UIKit
 import Firebase
 import FirebaseDatabase
+import GoogleMobileAds
 
 
 
-class CalculationViewController: UIViewController, UITextFieldDelegate {
+class CalculationViewController: UIViewController, UITextFieldDelegate, GADBannerViewDelegate {
     
     @IBOutlet weak var inputLabel: UILabel!
     @IBOutlet weak var outputLabel: UILabel!
@@ -14,6 +15,7 @@ class CalculationViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var PriceTextField: UITextField!
     @IBOutlet weak var sheetsTextField: UITextField!
     @IBOutlet weak var button: UIButton!
+    @IBOutlet weak var myBanner: GADBannerView!
     
    
     var socialMinimum = Float() //= 1600.00
@@ -36,11 +38,21 @@ class CalculationViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        
+        self.navigationController?.navigationBar.topItem!.title = "Назад"
+        self.navigationController?.navigationBar.tintColor = UIColor.white
+
         
         PriceTextField.delegate = self
         sheetsTextField.delegate = self
 
+        // ad banner
+        let request = GADRequest()
+        request.testDevices = [kGADSimulatorID]
+        myBanner.adUnitID = "ca-app-pub-4375494746414239/6254715307"
+        myBanner.rootViewController = self
+        myBanner.delegate = self
+        myBanner.load(request)
         
         if percentOfFirstInstanceFee != 0 {
             inputLabel.text = "Введіть розмір ставки судового збору, що підлягала сплаті при поданні позовної заяви, іншої заяви і скарги"
@@ -48,6 +60,7 @@ class CalculationViewController: UIViewController, UITextFieldDelegate {
         } else {
             if percent != 0 {
                 inputLabel.text = "Введіть ціну позову"
+                outputLabel.center.y = self.view.frame.size.height/4*3
             } else {
                 inputLabel.text = ""
                 PriceTextField.isHidden = true
@@ -55,7 +68,9 @@ class CalculationViewController: UIViewController, UITextFieldDelegate {
                     button.isHidden = true
                     fee = socialMinimum * min
                     outputLabel.text = "Сума судового збору:\n\(fee) грн."
-                    outputLabel.center.y = self.view.frame.size.height/2
+//                    print(self.view.frame.size.height)
+//                    outputLabel.center.y = self.view.frame.size.height/2
+//                    print(outputLabel.center.y)
                 }
             }
         }

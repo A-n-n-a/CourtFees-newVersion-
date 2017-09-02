@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="Header" customModule="Court_Fee" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" restorationIdentifier="HeaderView" id="iN0-l3-epB" customClass="HeaderView" customModule="Court_Fee" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KM4-NM-iL9">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="60" translatesAutoresizingMaskIntoConstraints="NO" id="rrW-6F-GXR" customClass="HeaderView" customModule="Court_Fee" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <color key="backgroundColor" red="0.054901960780000002" green="0.12941176469999999" blue="0.20392156859999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="rrW-6F-GXR" firstAttribute="leading" secondItem="KM4-NM-iL9" secondAttribute="leading" id="9bF-H9-t2a"/>
+                        <constraint firstAttribute="trailing" secondItem="rrW-6F-GXR" secondAttribute="trailing" id="Y5K-4Y-55e"/>
+                        <constraint firstAttribute="bottom" secondItem="rrW-6F-GXR" secondAttribute="bottom" id="m5a-pT-Bdt"/>
+                        <constraint firstItem="rrW-6F-GXR" firstAttribute="top" secondItem="KM4-NM-iL9" secondAttribute="top" id="wku-Ng-NwP"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="KM4-NM-iL9" secondAttribute="bottom" id="3CH-1z-Foh"/>
+                <constraint firstAttribute="trailing" secondItem="KM4-NM-iL9" secondAttribute="trailing" id="LS5-nk-yoE"/>
+                <constraint firstItem="KM4-NM-iL9" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="T9n-xs-bsZ"/>
+                <constraint firstItem="KM4-NM-iL9" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="bpk-dw-XQh"/>
+            </constraints>
+            <connections>
+                <outlet property="headerLabel" destination="rrW-6F-GXR" id="YaL-ld-5qO"/>
+            </connections>
+        </view>
+    </objects>
+</document>

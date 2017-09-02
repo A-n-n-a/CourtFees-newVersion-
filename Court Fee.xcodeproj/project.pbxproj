@@ -7,14 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9502491A1F37336100DC6895 /* FirstTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950249191F37336100DC6895 /* FirstTable.swift */; };
+		9502491C1F37338800DC6895 /* SecondTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9502491B1F37338800DC6895 /* SecondTableView.swift */; };
+		9502492A1F37996500DC6895 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950249291F37996500DC6895 /* HeaderView.swift */; };
 		953BCCE71F1E101200377512 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953BCCE61F1E101200377512 /* InitialViewController.swift */; };
 		95BBBB7C1EE555B300100889 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BBBB7B1EE555B300100889 /* AppDelegate.swift */; };
-		95BBBB7E1EE555B300100889 /* FirstTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BBBB7D1EE555B300100889 /* FirstTableViewController.swift */; };
 		95BBBB811EE555B300100889 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95BBBB7F1EE555B300100889 /* Main.storyboard */; };
 		95BBBB831EE555B300100889 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95BBBB821EE555B300100889 /* Assets.xcassets */; };
 		95BBBB861EE555B300100889 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95BBBB841EE555B300100889 /* LaunchScreen.storyboard */; };
 		95BBBB8E1EE5573E00100889 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BBBB8D1EE5573E00100889 /* Section.swift */; };
-		95BBBB901EE55AEA00100889 /* SecondTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BBBB8F1EE55AEA00100889 /* SecondTableViewController.swift */; };
 		95BBBB921EE55E7C00100889 /* SecondTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BBBB911EE55E7C00100889 /* SecondTable.swift */; };
 		95BBBB951EE5A9DE00100889 /* CalculationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BBBB941EE5A9DE00100889 /* CalculationViewController.swift */; };
 		95BBBB971EE5AB2100100889 /* CalculationDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BBBB961EE5AB2100100889 /* CalculationDetails.swift */; };
@@ -29,16 +30,17 @@
 /* Begin PBXFileReference section */
 		173F21ADEC5677508E731EF9 /* Pods-Court Fee.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Court Fee.release.xcconfig"; path = "Pods/Target Support Files/Pods-Court Fee/Pods-Court Fee.release.xcconfig"; sourceTree = "<group>"; };
 		29581F165C23D9E3EA96DC17 /* Pods_Court_Fee.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Court_Fee.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		950249191F37336100DC6895 /* FirstTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstTable.swift; sourceTree = "<group>"; };
+		9502491B1F37338800DC6895 /* SecondTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondTableView.swift; sourceTree = "<group>"; };
+		950249291F37996500DC6895 /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		953BCCE61F1E101200377512 /* InitialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		95BBBB781EE555B300100889 /* Court Fee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Court Fee.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		95BBBB7B1EE555B300100889 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		95BBBB7D1EE555B300100889 /* FirstTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstTableViewController.swift; sourceTree = "<group>"; };
 		95BBBB801EE555B300100889 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		95BBBB821EE555B300100889 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		95BBBB851EE555B300100889 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		95BBBB871EE555B300100889 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		95BBBB8D1EE5573E00100889 /* Section.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
-		95BBBB8F1EE55AEA00100889 /* SecondTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SecondTableViewController.swift; path = ../SecondTableViewController.swift; sourceTree = "<group>"; };
 		95BBBB911EE55E7C00100889 /* SecondTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondTable.swift; sourceTree = "<group>"; };
 		95BBBB941EE5A9DE00100889 /* CalculationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculationViewController.swift; sourceTree = "<group>"; };
 		95BBBB961EE5AB2100100889 /* CalculationDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculationDetails.swift; sourceTree = "<group>"; };
@@ -104,13 +106,13 @@
 				95BBBB931EE55EA300100889 /* Models */,
 				95BBBB9D1EE7498900100889 /* UI */,
 				953BCCE61F1E101200377512 /* InitialViewController.swift */,
-				95BBBB7D1EE555B300100889 /* FirstTableViewController.swift */,
-				95BBBB8F1EE55AEA00100889 /* SecondTableViewController.swift */,
+				950249191F37336100DC6895 /* FirstTable.swift */,
+				9502491B1F37338800DC6895 /* SecondTableView.swift */,
 				95BBBB941EE5A9DE00100889 /* CalculationViewController.swift */,
 				95BBBBA01EE74B3200100889 /* PaymentDetailsViewController.swift */,
-				95BBBB7F1EE555B300100889 /* Main.storyboard */,
 				95BBBB821EE555B300100889 /* Assets.xcassets */,
 				95D64CAC1F14C94200278796 /* Sources */,
+				95BBBB7F1EE555B300100889 /* Main.storyboard */,
 				95BBBB841EE555B300100889 /* LaunchScreen.storyboard */,
 				95D64CAA1F13F68300278796 /* GoogleService-Info.plist */,
 				95BBBB871EE555B300100889 /* Info.plist */,
@@ -133,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				95BBBB9A1EE7463900100889 /* CellClass.swift */,
+				950249291F37996500DC6895 /* HeaderView.swift */,
 				95BBBB9E1EE749A400100889 /* SecondTableViewCell.swift */,
 			);
 			name = UI;
@@ -272,15 +275,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9502491C1F37338800DC6895 /* SecondTableView.swift in Sources */,
 				95BBBBA11EE74B3200100889 /* PaymentDetailsViewController.swift in Sources */,
 				95BBBB9B1EE7463900100889 /* CellClass.swift in Sources */,
 				953BCCE71F1E101200377512 /* InitialViewController.swift in Sources */,
+				9502492A1F37996500DC6895 /* HeaderView.swift in Sources */,
 				95BBBB8E1EE5573E00100889 /* Section.swift in Sources */,
-				95BBBB901EE55AEA00100889 /* SecondTableViewController.swift in Sources */,
 				95BBBB921EE55E7C00100889 /* SecondTable.swift in Sources */,
 				95BBBB971EE5AB2100100889 /* CalculationDetails.swift in Sources */,
+				9502491A1F37336100DC6895 /* FirstTable.swift in Sources */,
 				95BBBB9F1EE749A400100889 /* SecondTableViewCell.swift in Sources */,
-				95BBBB7E1EE555B300100889 /* FirstTableViewController.swift in Sources */,
 				95BBBB951EE5A9DE00100889 /* CalculationViewController.swift in Sources */,
 				95BBBB7C1EE555B300100889 /* AppDelegate.swift in Sources */,
 			);
