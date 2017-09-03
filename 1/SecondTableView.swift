@@ -10,14 +10,25 @@ import UIKit
 import FirebaseDatabase
 import GoogleMobileAds
 
+struct Cell {
+    var text: String
+    var clickable: Bool
+    
+    init(text: String, clickable: Bool) {
+        self.text = text
+        self.clickable = clickable
+    }
+}
+
 class SecondTableView: UIViewController, UITableViewDelegate, UITableViewDataSource, GADBannerViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var myBanner: GADBannerView!
     
     var ref: DatabaseReference?
-    var sections = [String]()
-    var objects = [[String]]()
+//    var sections = [String]()
+//    var objects = [[String]]()
+    var displeyedArray = [String]()
     
     var selectedRow = SecondTableViewCell()
     
@@ -67,6 +78,9 @@ class SecondTableView: UIViewController, UITableViewDelegate, UITableViewDataSou
                             CalculationDetails(condition: "6) за виготовлення копій документів, долучених до справи", percent: nil, min: 0.003, max: nil, percentOfFirstInstanceFee: nil, sheetsNeeded: true),
                             CalculationDetails(condition: "У разі ухвалення судом постанови про накладення адміністративного стягнення", percent: nil, min: 0.2, max: nil, percentOfFirstInstanceFee: nil, sheetsNeeded: false)]
     
+    var disable = ["За подання до суду:", "1) позовної заяви майнового характеру, яка подана:","2) позовної заяви немайнового характеру, яка подана:", "3) позовної заяви:", "4) заяви про видачу судового наказу; заяви у справах окремого провадження; заяви про забезпечення доказів або позову; заяви про перегляд заочного рішення; заяви про скасування рішення третейського суду; заяви про видачу виконавчого документа на примусове виконання рішення третейського суду; заяви про видачу виконавчого документа на підставі рішення іноземного суду; заяви про роз’яснення судового рішення, які подано:","5) позовної заяви про захист честі та гідності фізичної особи, ділової репутації фізичної або юридичної особи, а саме:", "9) апеляційної і касаційної скарги на ухвалу суду; заяви про приєднання до апеляційної чи касаційної скарги на ухвалу суду:", "За подання до господарського суду:", "За подання до адміністративного суду:", "1) адміністративного позову майнового характеру, який подано:", "адміністративного позову немайнового характеру, який подано:", "За видачу судами документів:"]
+    
+    var cellsArray = [Cell]()
 
 
     override func viewDidLoad() {
@@ -75,30 +89,16 @@ class SecondTableView: UIViewController, UITableViewDelegate, UITableViewDataSou
         self.navigationController?.navigationBar.topItem!.title = "Назад"
         self.navigationController?.navigationBar.tintColor = UIColor.white
 
-        
         ref = Database.database().reference()
-
 
         //self-resizing cell
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 200
         
         //set the background
-        
         let image = UIImage(named: "bg")
         let imageView = UIImageView(image: image)
         tableView.backgroundView = imageView
-        
-//        let image = UIImage(named: "vintage-wood-background-28869861")
-//        let imageView = UIImageView(image: image)
-//        tableView.backgroundView = imageView
-//        if #available(iOS 10.0, *) {
-//            tableView.backgroundColor = UIColor(displayP3Red: 14/255.0, green: 33/255.0, blue: 52/255.0, alpha: 1)
-//        } else {
-//            // Fallback on earlier versions
-//        }
-        
-        self.tableView.register(UINib(nibName: "HeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: "HeaderView")
         
         // ad banner
         let request = GADRequest()
@@ -110,64 +110,52 @@ class SecondTableView: UIViewController, UITableViewDelegate, UITableViewDataSou
         
         //retrieve data from Firebase
         self.ref?.child("socialMinimum").observe(.value, with: { (snapshot) in
-            
             if let value = snapshot.value as? String {
-                
                 if Float(value) != nil {
                     self.socialMinimum = Float(value)!
                     print("INSIDE: \(self.socialMinimum)")
-                    //self.viewDidLoad()
-                    //self.loadView()
-                    
                 }
             }
-            
         })
-
+        
+        for i in displeyedArray {
+            var match = Bool()
+            for n in disable {
+                if i == n {
+                    match = true
+                    break
+                }
+            }
+            let element = match ? Cell(text: i, clickable: false) : Cell(text: i, clickable: true)
+            cellsArray.append(element)
+        }
+        print(cellsArray)
     }
 
-     func numberOfSections(in tableView: UITableView) -> Int {
-        return sections.count
-    }
-    
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.objects[section].count
+        return self.displeyedArray.count
     }
-    
-     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return self.sections[section]
-    }
-    
-    
+
      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SecondCell", for: indexPath) as! SecondTableViewCell
-        
-        cell.labelCell?.text = self.objects[indexPath.section][indexPath.row]
-        //cell.labelCell?.textColor = UIColor(white: 1.0, alpha: 1.0)
-        
+
+        cell.labelCell?.text = cellsArray[indexPath.row].text
+        cell.isUserInteractionEnabled = cellsArray[indexPath.row].clickable
+        if cell.isUserInteractionEnabled == false {
+            cell.labelCell.font = UIFont.boldSystemFont(ofSize: cell.labelCell.font.pointSize)
+            if #available(iOS 10.0, *) {
+                cell.backgroundColor = UIColor(displayP3Red: 14/255.0, green: 33/255.0, blue: 52/255.0, alpha: 0.25)
+            }
+        }
         return cell
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         let destViewController = segue.destination as! CalculationViewController
-        //парсим массив на структуры, индекс элемента массива - номер выбранной строки
         
         let selectedRowIndex = self.tableView.indexPathForSelectedRow
         selectedRow = self.tableView.cellForRow(at: selectedRowIndex!)! as! SecondTableViewCell
-        
-        /*if  selectedRow.textLabel?.text == "1) за повторну видачу копії судового рішення" ||
-         selectedRow.textLabel?.text == "3) за роздрукування технічного запису судового засідання" ||
-         selectedRow.textLabel?.text == "5) за виготовлення копії судового рішення у разі, якщо особа, яка не бере (не брала) участі у справі, якщо судове рішення безпосередньо стосується її прав, свобод, інтересів чи обов’язків, звертається до апарату відповідного суду з письмовою заявою про виготовлення такої копії згідно із Законом України 'Про доступ до судових рішень'" ||
-         selectedRow.textLabel?.text == "6) за виготовлення копій документів, долучених до справи" {
-         if destViewController.sheetsLabel != nil {
-         destViewController.sheetsLabel.isHidden = false
-         }
-         //if destViewController.sheetsTextField != nil {
-         destViewController.sheetsTextField.isHidden = false
-         
-         }*/
-        //print(selectedRow.labelCell?.text ?? "DEFAULT")
         for i in calculationArray {
             
             if i.condition == selectedRow.labelCell?.text {
@@ -202,15 +190,7 @@ class SecondTableView: UIViewController, UITableViewDelegate, UITableViewDataSou
                 
                 destViewController.sheetsNeeded = i.sheetsNeeded
                 destViewController.socialMinimum = self.socialMinimum
-                print("SOCIAL MINIMUM: \(socialMinimum)")
-                
-                
             }
         }
-        
-        //print("Condition: \(i.condition)")
-        //print("Selected row: \(selectedRow.textLabel!.text!)")
-        
     }
-
 }
