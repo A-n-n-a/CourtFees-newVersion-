@@ -97,10 +97,7 @@ class SecondTableView: UIViewController, UITableViewDelegate, UITableViewDataSou
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 200
         
-        //set the background
-        let image = UIImage(named: "bg")
-        let imageView = UIImageView(image: image)
-        tableView.backgroundView = imageView
+        tableView.backgroundColor = UIColor.clear
         
         // ad banner
         let request = GADRequest()
