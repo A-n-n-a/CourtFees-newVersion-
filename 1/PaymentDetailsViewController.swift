@@ -138,6 +138,7 @@ class PaymentDetailsViewController: UIViewController, UITextFieldDelegate, UITab
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         text.text = tableView.cellForRow(at: indexPath)?.textLabel?.text
         dropDown.isHidden = true
+        text.resignFirstResponder()
         performAction()
     }
         

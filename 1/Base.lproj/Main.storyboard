@@ -238,6 +238,7 @@
                     </view>
                     <connections>
                         <outlet property="PriceTextField" destination="ECw-7T-Qfx" id="oPI-gb-djo"/>
+                        <outlet property="bannerBottomConstraint" destination="svr-J8-zx7" id="zSG-EE-4hp"/>
                         <outlet property="bannerHeight" destination="Qe4-qW-dbZ" id="q2A-Yw-f3Y"/>
                         <outlet property="bannerWidth" destination="Lnt-Sq-47D" id="OCm-KI-IDj"/>
                         <outlet property="button" destination="tCz-i9-Ak0" id="YIC-fd-6bM"/>
