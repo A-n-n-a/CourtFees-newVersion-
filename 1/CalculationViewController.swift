@@ -49,7 +49,7 @@ class CalculationViewController: UIViewController, UITextFieldDelegate, GADBanne
         // ad banner
         let request = GADRequest()
         request.testDevices = [kGADSimulatorID]
-        myBanner.adUnitID = "ca-app-pub-4375494746414239/6254715307"
+        myBanner.adUnitID = banner4
         myBanner.rootViewController = self
         myBanner.delegate = self
         myBanner.load(request)

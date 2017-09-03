@@ -10,6 +10,12 @@ import UIKit
 import GoogleMobileAds
 import FirebaseDatabase
 
+let banner1 = "ca-app-pub-4375494746414239/6254715307"
+let banner2 = "ca-app-pub-4375494746414239/1425891577"
+let banner3 = "ca-app-pub-4375494746414239/2519481392"
+let banner4 = "ca-app-pub-4375494746414239/6075583020"
+let banner5 = "ca-app-pub-4375494746414239/7005521312"
+
 class InitialViewController: UIViewController, GADBannerViewDelegate {
     
     @IBOutlet weak var myBanner: GADBannerView!
@@ -28,7 +34,7 @@ class InitialViewController: UIViewController, GADBannerViewDelegate {
         // ad banner
         let request = GADRequest()
         request.testDevices = [kGADSimulatorID]
-        myBanner.adUnitID = "ca-app-pub-4375494746414239/6254715307"
+        myBanner.adUnitID = banner1
         myBanner.rootViewController = self
         myBanner.delegate = self
         myBanner.load(request)
