@@ -19,6 +19,8 @@ let banner5 = "ca-app-pub-4375494746414239/7005521312"
 class InitialViewController: UIViewController, GADBannerViewDelegate {
     
     @IBOutlet weak var myBanner: GADBannerView!
+    @IBOutlet weak var bannerWidth: NSLayoutConstraint!
+    @IBOutlet weak var bannerHeight: NSLayoutConstraint!
     
     var ref: DatabaseReference?
     var exeptionArray = [String]()
@@ -58,6 +60,11 @@ class InitialViewController: UIViewController, GADBannerViewDelegate {
                 self.exeptionArray = value as! [String]
             }
         })
+        
+        if UIDevice.current.model == "iPad" {
+            bannerWidth.constant = 728
+            bannerHeight.constant = 90
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

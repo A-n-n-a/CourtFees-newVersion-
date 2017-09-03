@@ -24,6 +24,8 @@ class SecondTableView: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var myBanner: GADBannerView!
+    @IBOutlet weak var bannerWidth: NSLayoutConstraint!
+    @IBOutlet weak var bannerHeight: NSLayoutConstraint!
     
     var ref: DatabaseReference?
 //    var sections = [String]()
@@ -129,7 +131,11 @@ class SecondTableView: UIViewController, UITableViewDelegate, UITableViewDataSou
             let element = match ? Cell(text: i, clickable: false) : Cell(text: i, clickable: true)
             cellsArray.append(element)
         }
-        print(cellsArray)
+        
+        if UIDevice.current.model == "iPad" {
+            bannerWidth.constant = 728
+            bannerHeight.constant = 90
+        }
     }
 
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -18,6 +18,8 @@ class PaymentDetailsViewController: UIViewController, UITextFieldDelegate, UITab
 
     @IBOutlet weak var dropDownHeight: NSLayoutConstraint!
     @IBOutlet weak var myBanner: GADBannerView!
+    @IBOutlet weak var bannerWidth: NSLayoutConstraint!
+    @IBOutlet weak var bannerHeight: NSLayoutConstraint!
     
     
     var ref: DatabaseReference? = Database.database().reference()
@@ -51,6 +53,11 @@ class PaymentDetailsViewController: UIViewController, UITextFieldDelegate, UITab
         myBanner.rootViewController = self
         myBanner.delegate = self
         myBanner.load(request)
+        
+        if UIDevice.current.model == "iPad" {
+            bannerWidth.constant = 728
+            bannerHeight.constant = 90
+        }
 
    }
     

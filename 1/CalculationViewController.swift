@@ -16,6 +16,8 @@ class CalculationViewController: UIViewController, UITextFieldDelegate, GADBanne
     @IBOutlet weak var sheetsTextField: UITextField!
     @IBOutlet weak var button: UIButton!
     @IBOutlet weak var myBanner: GADBannerView!
+    @IBOutlet weak var bannerWidth: NSLayoutConstraint!
+    @IBOutlet weak var bannerHeight: NSLayoutConstraint!
     
    
     var socialMinimum = Float() //= 1600.00
@@ -80,6 +82,11 @@ class CalculationViewController: UIViewController, UITextFieldDelegate, GADBanne
             sheetsTextField.isHidden = true
         }
 
+        if UIDevice.current.model == "iPad" {
+            bannerWidth.constant = 728
+            bannerHeight.constant = 90
+        }
+        
         
     }
     

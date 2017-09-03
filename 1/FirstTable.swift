@@ -14,6 +14,10 @@ class FirstTable: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var myBanner: GADBannerView!
+    @IBOutlet weak var bannerWidth: NSLayoutConstraint!
+    @IBOutlet weak var bannerHeight: NSLayoutConstraint!
+    
+    
     var firstTableArray = [Section(section: "Оберіть дію, за яку справляється судовий збір", objects: ["За звернення до суду","За звернення до господарського суду", "За звернення до адміністративного суду", "За видачу судами документів", "У разі ухвалення судом постанови про накладення адміністративного стягнення"])]
     
 
@@ -43,6 +47,11 @@ class FirstTable: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         myBanner.rootViewController = self
         myBanner.delegate = self
         myBanner.load(request)
+        
+        if UIDevice.current.model == "iPad" {
+            bannerWidth.constant = 728
+            bannerHeight.constant = 90
+        }
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
