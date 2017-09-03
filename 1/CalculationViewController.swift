@@ -71,17 +71,19 @@ class CalculationViewController: UIViewController, UITextFieldDelegate, GADBanne
             } else {
                 inputLabel.text = ""
                 priceTextField.isHidden = true
+                if sheetsNeeded == false {
+                    button.isHidden = true
+                    bannerBottomConstraint.constant = self.view.frame.height / 2 - bannerHeight.constant
+                    fee = socialMinimum * min
+                    outputLabel.text = "Сума судового збору:\n\(fee) грн."
+                }
             }
         }
         
         if sheetsNeeded == false {
             sheetsLabel.isHidden = true
             sheetsTextField.isHidden = true
-            button.isHidden = true
-            fee = socialMinimum * min
-            outputLabel.text = "Сума судового збору:\n\(fee) грн."
-            bannerBottomConstraint.constant = self.view.frame.height / 2 - bannerHeight.constant
-        }   
+        }
     }
     
     //key board will dissmiss while touching screeng anywhere
@@ -100,8 +102,6 @@ class CalculationViewController: UIViewController, UITextFieldDelegate, GADBanne
             
             if Float(formattedString) != nil {
                 claimPrice = Float(formattedString)!
-               // print(PriceTextField.text ?? "DEFAULT")
-                //print("CLAIM PRICE \(claimPrice)")
             }
         }
         if sheetsNeeded == true {

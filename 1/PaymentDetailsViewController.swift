@@ -129,17 +129,23 @@ class PaymentDetailsViewController: UIViewController, UITextFieldDelegate, UITab
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "DropDownCell", for: indexPath)
-        cell.textLabel?.text = dropDownArray[indexPath.row]
-        cell.textLabel?.font = UIFont.systemFont(ofSize: 13.0)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "DropDownCell", for: indexPath) as! DropDownCell
+        cell.autocompletionLabel.text = dropDownArray[indexPath.row]
+        //cell.textLabel?.text = dropDownArray[indexPath.row]
+        //cell.textLabel?.font = UIFont.systemFont(ofSize: 13.0)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        text.text = tableView.cellForRow(at: indexPath)?.textLabel?.text
+        text.text = dropDownArray[indexPath.row]
+        //text.text = tableView.cellForRow(at: indexPath)?.textLabel?.text
         dropDown.isHidden = true
         text.resignFirstResponder()
         performAction()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UIDevice.current.model == "iPad" ? 40 : 20
     }
         
 
