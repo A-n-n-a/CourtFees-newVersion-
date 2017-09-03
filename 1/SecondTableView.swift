@@ -88,7 +88,7 @@ class SecondTableView: UIViewController, UITableViewDelegate, UITableViewDataSou
         
         self.navigationController?.navigationBar.topItem!.title = "Назад"
         self.navigationController?.navigationBar.tintColor = UIColor.white
-
+        
         ref = Database.database().reference()
 
         //self-resizing cell
@@ -192,5 +192,9 @@ class SecondTableView: UIViewController, UITableViewDelegate, UITableViewDataSou
                 destViewController.socialMinimum = self.socialMinimum
             }
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationItem.title = nil
     }
 }
