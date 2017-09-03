@@ -28,15 +28,11 @@ class SecondTableView: UIViewController, UITableViewDelegate, UITableViewDataSou
     @IBOutlet weak var bannerHeight: NSLayoutConstraint!
     
     var ref: DatabaseReference?
-//    var sections = [String]()
-//    var objects = [[String]]()
     var displeyedArray = [String]()
-    
     var selectedRow = SecondTableViewCell()
-    
     let indexPath = IndexPath()
-    
     var socialMinimum = Float()
+    var fontSize = CGFloat()
     
     var calculationArray = [CalculationDetails(condition: "юридичною особою", percent: 1.5, min: 1, max: nil, percentOfFirstInstanceFee: nil, sheetsNeeded: false),
                             CalculationDetails(condition: "фізичною особою або фізичною особою - підприємцем", percent: 1, min: 0.4, max: nil, percentOfFirstInstanceFee: nil, sheetsNeeded: false),
@@ -141,7 +137,7 @@ class SecondTableView: UIViewController, UITableViewDelegate, UITableViewDataSou
 
      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SecondCell", for: indexPath) as! SecondTableViewCell
-
+        cell.backgroundColor = UIColor.clear
         cell.labelCell?.text = cellsArray[indexPath.row].text
         cell.isUserInteractionEnabled = cellsArray[indexPath.row].clickable
         if cell.isUserInteractionEnabled == false {
@@ -162,38 +158,12 @@ class SecondTableView: UIViewController, UITableViewDelegate, UITableViewDataSou
         for i in calculationArray {
             
             if i.condition == selectedRow.labelCell?.text {
-                if i.percent != nil {
-                    destViewController.percent = i.percent!
-                    print(destViewController.percent)
-                } else {
-                    destViewController.percent = 0
-                    print(destViewController.percent)
-                }
-                if i.min != nil {
-                    destViewController.min = i.min!
-                    print("MIN: \(destViewController.min)")
-                } else {
-                    destViewController.min = 0
-                    print(destViewController.min)
-                }
-                if i.max != nil {
-                    destViewController.max = i.max!
-                    print(destViewController.max)
-                } else {
-                    destViewController.max = 0
-                    print(destViewController.max)
-                }
-                if i.percentOfFirstInstanceFee != nil {
-                    destViewController.percentOfFirstInstanceFee = i.percentOfFirstInstanceFee!
-                    print(destViewController.percentOfFirstInstanceFee)
-                } else {
-                    destViewController.percentOfFirstInstanceFee = 0
-                    print(destViewController.percentOfFirstInstanceFee)
-                }
-                
+                destViewController.percent = i.percent ?? 0
+                destViewController.min = i.min ?? 0
+                destViewController.max = i.max ?? 0
+                destViewController.percentOfFirstInstanceFee = i.percentOfFirstInstanceFee ?? 0
                 destViewController.sheetsNeeded = i.sheetsNeeded
-                destViewController.socialMinimum = self.socialMinimum
-            }
+                destViewController.socialMinimum = self.socialMinimum            }
         }
     }
     

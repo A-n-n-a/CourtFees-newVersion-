@@ -65,6 +65,7 @@ class FirstTable: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CellClass
         cell.labelCell?.text = firstTableArray[indexPath.section].objects[indexPath.row]
+        cell.backgroundColor = UIColor.clear
         return cell
     }
     
@@ -72,10 +73,6 @@ class FirstTable: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         let indexPath: NSIndexPath = self.tableView.indexPathForSelectedRow! as NSIndexPath
         let destViewController = segue.destination as! SecondTableView
         destViewController.displeyedArray = secondArray[indexPath.row]
-        }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
     }
     
     override func viewWillAppear(_ animated: Bool) {

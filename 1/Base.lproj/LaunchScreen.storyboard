@@ -24,31 +24,39 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Судовий збір" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TaY-ZO-2so">
+                                <rect key="frame" x="54.5" y="310" width="266" height="48"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="60"/>
+                                </variation>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Додаток створено за даними Єдиного державного веб-порталу відкритих даних data.gov.ua" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Upp-Ur-C56">
-                                <rect key="frame" x="10" y="317" width="355" height="33.5"/>
+                                <rect key="frame" x="30" y="458" width="315" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="Tci-WY-RpO"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Судовий збір" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TaY-ZO-2so">
-                                <rect key="frame" x="52" y="210" width="272" height="49"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="41"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                </variation>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Upp-Ur-C56" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="3Et-JD-x4F"/>
+                            <constraint firstItem="TaY-ZO-2so" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="0Gj-EV-VA5"/>
                             <constraint firstAttribute="trailing" secondItem="wP6-5w-0Ct" secondAttribute="trailing" id="7CG-6h-gGb"/>
                             <constraint firstItem="wP6-5w-0Ct" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="9kL-ac-xLR"/>
-                            <constraint firstItem="TaY-ZO-2so" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Ds3-hU-B1k"/>
+                            <constraint firstAttribute="trailing" secondItem="Upp-Ur-C56" secondAttribute="trailing" constant="30" id="AfA-a4-Nzv"/>
                             <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="wP6-5w-0Ct" secondAttribute="bottom" id="Sy8-3K-kZt"/>
-                            <constraint firstAttribute="trailing" secondItem="Upp-Ur-C56" secondAttribute="trailing" constant="10" id="e3T-aO-zXs"/>
+                            <constraint firstItem="Upp-Ur-C56" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="30" id="YpP-an-cgt"/>
                             <constraint firstItem="wP6-5w-0Ct" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="fRI-Cs-6T7"/>
-                            <constraint firstItem="Upp-Ur-C56" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="10" id="jgy-f3-YdB"/>
-                            <constraint firstItem="TaY-ZO-2so" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="190" id="krx-qn-6Om"/>
-                            <constraint firstItem="Upp-Ur-C56" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="vVY-2m-DMI"/>
+                            <constraint firstItem="TaY-ZO-2so" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="iVb-hu-t8f"/>
+                            <constraint firstItem="Upp-Ur-C56" firstAttribute="top" secondItem="TaY-ZO-2so" secondAttribute="bottom" constant="100" id="vr5-UG-Zr5"/>
                         </constraints>
                     </view>
                 </viewController>
